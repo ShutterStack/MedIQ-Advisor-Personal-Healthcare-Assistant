@@ -1,0 +1,144 @@
+{% extends 'base2.html' %}
+
+{% block title %}
+Questionnaire based on Heart Health
+{% endblock title %}
+
+{% block body %}
+
+<!-- form -->
+<div class="container" style="width: 75%;">
+
+    <form method="POST" action="/heart_health">
+
+        {% csrf_token %}
+
+        <h2 class="text-light text-center mb-4">Heart Health Survey</h2>
+
+        <!-- Question: What is your age? -->
+        <label class="mb-2 text-light" for="age">What is your age?</label>
+        <div class="mb-3">
+            <input type="number" class="form-control" id="age" name="age" placeholder="Enter your age">
+        </div>
+
+        <!-- Question: What is your gender? -->
+        <label class="mb-2 text-light" for="gender">What is your gender?</label>
+        <div class="mb-3">
+            <select class="form-select" id="gender" name="gender">
+                <option selected disabled>Select an option</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+
+        <!-- Question: Have you experienced chest pain? -->
+        <label class="mb-2 text-light">Have you experienced chest pain?</label>
+        <div class="mb-3">
+            <select class="form-select" id="chestPain" name="chestPain">
+                <option selected disabled>Select an option</option>
+                <option value="Asympotmatic">Asympotmatic</option>
+                <option value="NonAnginal">Non-anginal pain</option>
+                <option value="atypical">Atypical Angina</option>
+                <option value="typical">Typical Angina</option>
+            </select>
+        </div>
+
+        <!-- Question: What is your resting blood pressure? -->
+        <label class="mb-2 text-light" for="restingBP">What is your resting blood pressure?</label>
+        <div class="mb-3">
+            <input type="number" class="form-control" id="restingBP" name="restingBP" placeholder="Enter your resting blood pressure">
+        </div>        
+
+        <!-- Question: What is your serum cholesterol level? -->
+        <label class="mb-2 text-light" for="cholesterolLevel">What is your serum cholesterol level?</label>
+        <div class="mb-3">
+            <input type="number" class="form-control" id="cholesterolLevel" name="cholesterolLevel" placeholder="Enter your serum cholesterol level">
+        </div>
+
+        <!-- Question: Do you have high fasting blood sugar? -->
+        <label class="mb-2 text-light">Do you have high fasting blood sugar?</label>
+        <div class="mb-3">
+            <select class="form-select" id="highFastingBloodSugar" name="highFastingBloodSugar">
+                <option selected disabled>Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <!-- Question: What are the results of your resting electrocardiogram? -->
+        <label class="mb-2 text-light" for="restingECG">What are the results of your resting electrocardiogram?</label>
+        <div class="mb-3">
+            <select class="form-select" id="restingECG" name="restingECG">
+                <option selected disabled>Select an option</option>
+                <option value="0">Yes</option>
+                <option value="1">No</option>
+            </select>
+        </div>
+
+        <!-- Question: What is your maximum heart rate achieved during exercise? -->
+        <label class="mb-2 text-light" for="maxHeartRate">What is your maximum heart rate achieved during
+            exercise?</label>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="maxHeartRate" name="maxHeartRate"
+                placeholder="Enter your maximum heart rate achieved during exercise">
+        </div>
+
+        <!-- Question: Do you experience exercise-induced angina? -->
+        <label class="mb-2 text-light">Do you experience exercise-induced angina?</label>
+        <div class="mb-3">
+            <select class="form-select" id="exerciseInducedAngina" name="exerciseInducedAngina">
+                <option selected disabled>Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <!-- Question: What is the ST depression induced by exercise relative to rest? -->
+        <label class="mb-2 text-light" for="stDepression">What is the ST depression induced by exercise relative to
+            rest?</label>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="stDepression" name="stDepression"
+                placeholder="Enter the ST depression induced by exercise relative to rest">
+        </div>
+
+        <!-- Question: What is the slope of the peak exercise ST segment? -->
+        <label class="mb-2 text-light" for="peakExerciseSTSlope">What is the slope of the peak exercise ST
+            segment?</label>
+        <div class="mb-3">
+            <select class="form-select" id="peakExerciseSTSlope" name="peakExerciseSTSlope">
+                <option selected disabled>Select an option</option>
+                <option value="unslopping">unslopping</option>
+                <option value="flat">Flat</option>
+                <option value="downslopping">Downslopping</option>
+            </select>
+        </div>
+
+        <!-- Question: How many major vessels are colored by fluoroscopy? -->
+        <label class="mb-2 text-light" for="coloredVessels">How many major vessels are colored by fluoroscopy?</label>
+        <div class="mb-3">
+            <select class="form-select" id="coloredVessels" name="coloredVessels">
+                <option selected disabled>Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <!-- Question: What is the type of thalassemia? -->
+        <label class="mb-2 text-light" for="thalassemiaType">What is the type of thalassemia?</label>
+        <div class="mb-3">
+            <select class="form-select" id="thalassemiaType" name="thalassemiaType">
+                <option selected disabled>Select an option</option>
+                <option value="tone">Type 1</option>
+                <option value="ttwo">Type 2</option>
+                <option value="tthree">Type 3</option>
+            </select>
+        </div>
+
+        <!-- Submit button -->
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-outline-primary my-3">SUBMIT</button>
+        </div>
+    </form>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,48 @@
+{% extends 'base1.html' %}
+
+{% block title %}Sign in{% endblock title %}
+
+{% block body %}
+
+<div class="container text-center pb-3">
+    <h1>Experience how it feels to interact with<br> a health-care specialist<br> without actually going to one</h1>
+</div>
+
+<!-- form -->
+<div class="container" style="width: 40%;">
+
+    <form method="POST" action="/home">
+
+        {% csrf_token %}
+        <!-- Username input -->
+        <div class="form-outline mb-4">
+            <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required
+                autofocus />
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"
+                required />
+        </div>
+
+        <div class="col">
+            <!-- Forgot password -->
+            <a href="/forgot_password" target="_blank">Forgot password?</a>
+        </div>
+
+        <!-- Submit button -->
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-outline-warning my-3">Sign in</button>
+        </div>
+
+        <!-- Register buttons -->
+        <p class="d-flex justify-content-center text-info mt-5 mb-4">Not a member?
+            <a href="/sign_up" style="color: rgb(255, 255, 255);">Register</a>
+        </p>
+            
+    </form>
+
+</div>
+
+{% endblock body %}

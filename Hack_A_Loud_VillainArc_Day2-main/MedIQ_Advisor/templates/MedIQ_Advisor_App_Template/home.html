@@ -1,0 +1,50 @@
+{% extends 'base2.html' %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+
+{% block body %}
+
+<!-- hero -->
+<div class="container">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="/static/images/upper-img.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="600" height="600" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <h2 class="display-6 fw-bold text-primary lh-1 mb-3">Welcome to MedIQ Advisor: Your personal healthcare companion</h2>
+            <hr class="my-4">
+            <p class="lead fs-4 text-info">The healthcare industry is continuously looking for ways to improve user experience and outcomes. Feel free to try out the features provided below.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="http://127.0.0.1:3000/">
+                    <button type="button" class="btn btn-outline-warning btn-lg px-4">Chatbot</button>
+                </a>
+                <a href="http://localhost:8501">
+                <!-- <a href="#"> -->
+                    <button type="button" class="btn btn-outline-warning btn-lg px-4">Detect Emotion</button>
+                </a>
+                <button type="button" class="btn btn-outline-warning btn-lg px-4" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">Virtual Assistant</button>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <p class="text-dark fw-bold mb-0"> Proceed to terminal to use this</p>
+                            </div>
+                            <div class="modal-footer px-1 py-1">
+                                <button type="button" class="btn btn-secondary btn-sm"
+                                    data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
