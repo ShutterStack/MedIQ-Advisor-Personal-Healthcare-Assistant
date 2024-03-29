@@ -1,0 +1,25 @@
+{% extends 'base1.html' %}
+
+{% block title %}
+Camera
+{% endblock title %}
+
+
+{% block body %}
+<div class="container">
+
+    <h3 class="text-info text-center mb-3 mb-3">Scan your face here!!</h3>
+
+    <div class="embed-responsive embed-responsive-4by3 text-center mb-4">
+        <video class="embed-responsive-item" id="video" autoplay></video>
+    </div>
+
+    <div class="d-grid gap-2 col-6 mx-auto mb-5">
+        <!-- <a href="http://127.0.0.1:5000" > -->
+        <a href="#" >
+        <button class="btn btn-success mb-3" id="startButton" type="button">Start Camera</button></a>
+        <button class="btn btn-danger" id="stopBwutton" type="button">Recommend Now</button>
+    </div>
+</div>
+
+{% endblock body %}

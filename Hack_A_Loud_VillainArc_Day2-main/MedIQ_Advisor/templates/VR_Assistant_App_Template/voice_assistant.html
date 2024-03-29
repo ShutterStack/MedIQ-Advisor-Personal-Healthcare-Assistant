@@ -1,0 +1,35 @@
+{% extends 'MedIQ_Advisor_App_Template/base2.html' %}
+
+{% block title %}
+Voice Assistant
+{% endblock title %}
+
+
+{% block body %}
+
+<h1>Executing in the terminal</h1>
+
+<!-- hero -->
+<div class="container">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="/static/images/imgs1.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <h2 class="display-6 fw-bold text-primary lh-1 mb-3">Welcome to MedIQ Advisor - Your personal healthcare companion</h2>
+            <hr class="my-4">
+            <p class="lead fs-4 text-info">Ask our AI Powered chatbot any concern related to your health</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="/camera">
+                    <button type="button" class="btn btn-outline-warning btn-lg px-4">Click to use Chatbot</button>
+                    <!-- <a href="http://localhost:8501"> -->
+                    <a href="#">
+                        <button type="button" class="btn btn-outline-warning btn-lg px-4">Detect Emotion</button>
+                    </a>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
