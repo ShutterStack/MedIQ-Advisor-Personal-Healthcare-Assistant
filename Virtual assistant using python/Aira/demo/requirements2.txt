@@ -1,9 +1,0 @@
-datetime
-SpeechRecognition
-pyautogui
-wikipedia
-pywhatkit
-pyobjc-framework-AppKit
-requests
-clipboard
-pyjokes

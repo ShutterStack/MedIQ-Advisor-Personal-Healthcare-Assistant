@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/utility.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/emotion_questionnaire.css') }}">
+    <title>Emotion Questionnaire | MedIQ Advisor</title>
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <img src="/static/images/mediq_advisor.png" alt="Logo">
+        </div>
+        <div class="center">
+            <nav>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/about_us">About Us</a></li>
+                    <li><a href="/contact_us">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right">
+            <a href="/"><button>Sign Out</button></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="emotion-questionnaire-container-form">
+            <h2>Mental Health Survey</h2>
+
+            <form id="emotionQuestionnaireForm" method="post">
+                <!-- Question 1 -->
+                <div class="form-group">
+                    <label for="age">What is your age?</label>
+                    <input type="number" id="age" name="age" placeholder="Enter Your Age" />
+                </div>
+
+                <!-- Question 2 -->
+                <label for="gender">Choose your gender.</label>
+                <div class="form-group">
+                    <input type="radio" id="male" name="gender" value="male" required>
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                    <input type="radio" id="nonBinary" name="gender" value="nonBinary">
+                    <label for="nonBinary">Non-binary</label>
+                </div>
+
+                <!-- Question 3 -->
+                <label for="selfEmployed">Are you self-employed?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesSelf" name="selfEmployed" value="yes" required>
+                    <label for="yesSelf">Yes</label>
+                    <input type="radio" id="noSelf" name="selfEmployed" value="no">
+                    <label for="noSelf">No</label>
+                </div>
+
+                <!-- Question 4 -->
+                <label for="familyHistory">Do you have a family history of mental
+                    illness?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesFamily" name="familyHistory" value="yes" required>
+                    <label for="yesFamily">Yes</label>
+                    <input type="radio" id="noFamily" name="familyHistory" value="no">
+                    <label for="noFamily">No</label>
+                </div>
+
+                <!-- Question 5 -->
+                <label for="mentalHealthInterference">If you have a mental health condition,
+                    do you feel that interferes with your work?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesInterference" name="mentalHealthInterference" value="yes" required>
+                    <label for="yesInterference">Yes</label>
+                    <input type="radio" id="noInterference" name="mentalHealthInterference" value="no">
+                    <label for="noInterference">No</label>
+                    <input type="radio" id="maybeInterference" name="mentalHealthInterference" value="maybe">
+                    <label for="maybeInterference">Maybe</label>
+                </div>
+
+                <!-- Question 6 -->
+                <label for="companySize">How many employees does your company or
+                    organization have?</label>
+                <div class="form-group">
+                    <input type="radio" id="0-25" name="companySize" value="0-25" required>
+                    <label for="0-25">0-25</label>
+                    <input type="radio" id="26-100" name="companySize" value="26-100">
+                    <label for="26-100">26-100</label>
+                    <input type="radio" id="100-500" name="companySize" value="100-500">
+                    <label for="100-500">100-500</label>
+                    <input type="radio" id="500-1000" name="companySize" value="500-1000">
+                    <label for="500-1000">500-1000</label>
+                    <input type="radio" id="moreThan1000" name="companySize" value="moreThan1000">
+                    <label for="moreThan1000">More than 1000</label>
+                </div>
+
+                <!-- Question 7 -->
+                <label for="remoteWork">Do you work remotely (outside of an office) at least
+                    50% of the time?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesRemote" name="remoteWork" value="yes" required>
+                    <label for="yesRemote">Yes</label>
+                    <input type="radio" id="noRemote" name="remoteWork" value="no">
+                    <label for="noRemote">No</label>
+                </div>
+
+                <!-- Question 8 -->
+                <label for="techCompany">Is your company/organization primarily a
+                    tech-based?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesTech" name="techCompany" value="yes" required>
+                    <label for="yesTech">Yes</label>
+                    <input type="radio" id="noTech" name="techCompany" value="no">
+                    <label for="noTech">No</label>
+                </div>
+
+                <!-- Question 9 -->
+                <label for="mentalHealthBenefits">Does your employer provide mental health
+                    benefits?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesBenefits" name="mentalHealthBenefits" value="yes" required>
+                    <label for="yesBenefits">Yes</label>
+                    <input type="radio" id="noBenefits" name="mentalHealthBenefits" value="no">
+                    <label for="noBenefits">No</label>
+                </div>
+
+                <!-- Question 10 -->
+                <label for="knowMentalHealthCare">Do you know the options for mental health
+                    care your employer provides?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesMentalHealthCare" name="knowMentalHealthCare" value="yes" required>
+                    <label for="yesMentalHealthCare">Yes</label>
+                    <input type="radio" id="noMentalHealthCare" name="knowMentalHealthCare" value="no">
+                    <label for="noMentalHealthCare">No</label>
+                    <input type="radio" id="notSureMentalHealthCare" name="knowMentalHealthCare" value="notSure">
+                    <label for="notSureMentalHealthCare">Not sure</label>
+                </div>
+
+                <!-- Question 11 -->
+                <label for="discussedMentalHealth">Has your employer ever discussed mental
+                    health as part of an employee wellness program?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesEmployeeWellness" name="discussedMentalHealth" value="yes" required>
+                    <label for="yesEmployeeWellness">Yes</label>
+                    <input type="radio" id="noEmployeeWellness" name="discussedMentalHealth" value="no">
+                    <label for="noEmployeeWellness">No</label>
+                    <input type="radio" id="dontKnowEmployeeWellness" name="discussedMentalHealth" value="dontKnow">
+                    <label for="dontKnowEmployeeWellness">Don't know</label>
+                </div>
+
+                <!-- Question 12 -->
+                <label for="resourcesLearnMentalHealth">Does your employer provide resources
+                    to learn more about mental health issues and how to seek help?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesResourcesLearn" name="resourcesLearnMentalHealth" value="yes" required>
+                    <label for="yesResourcesLearn">Yes</label>
+                    <input type="radio" id="noResourcesLearn" name="resourcesLearnMentalHealth" value="no">
+                    <label for="noResourcesLearn">No</label>
+                    <input type="radio" id="dontKnowResourcesLearn" name="resourcesLearnMentalHealth" value="dontKnow">
+                    <label for="dontKnowResourcesLearn">Don't know</label>
+                </div>
+
+                <!-- Question 13 -->
+                <label for="anonymityProtected">Is your anonymity protected if you choose to
+                    take advantage of mental health or substance abuse treatment resources?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesAnonymity" name="anonymityProtected" value="yes" required>
+                    <label for="yesAnonymity">Yes</label>
+                    <input type="radio" id="noAnonymity" name="anonymityProtected" value="no">
+                    <label for="noAnonymity">No</label>
+                    <input type="radio" id="dontKnowAnonymity" name="anonymityProtected" value="dontKnow">
+                    <label for="dontKnowAnonymity">Don't know</label>
+                </div>
+
+                <!-- Question 14 -->
+                <label for="medicalLeave">How easy is it for you to take medical leave for a
+                    mental health condition?</label>
+                <div class="form-group">
+                    <input type="radio" id="dontKnowMedicalLeave" name="medicalLeave" value="dontKnow" required>
+                    <label for="dontKnowMedicalLeave">Don't know</label>
+                    <input type="radio" id="veryEasy" name="medicalLeave" value="veryEasy">
+                    <label for="veryEasy">Very easy</label>
+                    <input type="radio" id="somewhatEasy" name="medicalLeave" value="somewhatEasy">
+                    <label for="somewhatEasy">Somewhat easy</label>
+                    <input type="radio" id="somewhatDifficult" name="medicalLeave" value="somewhatDifficult">
+                    <label for="somewhatDifficult">Somewhat difficult</label>
+                    <input type="radio" id="veryDifficult" name="medicalLeave" value="veryDifficult">
+                    <label for="veryDifficult">Very difficult</label>
+                </div>
+
+                <!-- Question 15 -->
+                <label for="negativeConsequencesMentalHealth">Do you think that discussing a
+                    mental health issue with your employer would have negative consequences?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesNegativeConsequencesMentalHealth" name="negativeConsequencesMentalHealth"
+                        value="yes" required>
+                    <label for="yesNegativeConsequencesMentalHealth">Yes</label>
+                    <input type="radio" id="noNegativeConsequencesMentalHealth" name="negativeConsequencesMentalHealth"
+                        value="no">
+                    <label for="noNegativeConsequencesMentalHealth">No</label>
+                    <input type="radio" id="maybeNegativeConsequencesMentalHealth"
+                        name="negativeConsequencesMentalHealth" value="maybe">
+                    <label for="maybeNegativeConsequencesMentalHealth">May be</label>
+                </div>
+
+                <!-- Question 16 -->
+                <label for="negativeConsequencesPhysicalHealth">Do you think that discussing
+                    a physical health issue with your employer would have negative consequences?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesNegativeConsequencesPhysicalHealth"
+                        name="negativeConsequencesPhysicalHealth" value="yes" required>
+                    <label for="yesNegativeConsequencesPhysicalHealth">Yes</label>
+                    <input type="radio" id="noNegativeConsequencesPhysicalHealth"
+                        name="negativeConsequencesPhysicalHealth" value="no">
+                    <label for="noNegativeConsequencesPhysicalHealth">No</label>
+                    <input type="radio" id="maybeNegativeConsequencesPhysicalHealth"
+                        name="negativeConsequencesPhysicalHealth" value="maybe">
+                    <label for="maybeNegativeConsequencesPhysicalHealth">May be</label>
+                </div>
+
+                <!-- Question 17 -->
+                <label for="discussWithCoworkers">Would you be willing to discuss a mental
+                    health issue with your coworkers?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesDiscussWithCoworkers" name="discussWithCoworkers" value="yes" required>
+                    <label for="yesDiscussWithCoworkers">Yes</label>
+                    <input type="radio" id="noDiscussWithCoworkers" name="discussWithCoworkers" value="no">
+                    <label for="noDiscussWithCoworkers">No</label>
+                    <input type="radio" id="someOfThemDiscussWithCoworkers" name="discussWithCoworkers"
+                        value="someOfThem">
+                    <label for="someOfThemDiscussWithCoworkers">Some of them</label>
+                </div>
+
+                <!-- Question 18 -->
+                <label for="discussWithSupervisors">Would you be willing to discuss a mental
+                    health issue with your direct supervisors?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesDiscussWithSupervisors" name="discussWithSupervisors" value="yes"
+                        required>
+                    <label for="yesDiscussWithSupervisors">Yes</label>
+                    <input type="radio" id="noDiscussWithSupervisors" name="discussWithSupervisors" value="no">
+                    <label for="noDiscussWithSupervisors">No</label>
+                    <input type="radio" id="someOfThemDiscussWithSupervisors" name="discussWithSupervisors"
+                        value="someOfThem">
+                    <label for="someOfThemDiscussWithSupervisors">Some of them</label>
+                </div>
+
+                <!-- Question 19 -->
+                <label for="bringUpInInterviewMentalHealth">Would you bring up a mental
+                    health issue with a potential employer in an interview?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesBringUpInInterviewMentalHealth" name="bringUpInInterviewMentalHealth"
+                        value="yes" required>
+                    <label for="yesBringUpInInterviewMentalHealth">Yes</label>
+                    <input type="radio" id="noBringUpInInterviewMentalHealth" name="bringUpInInterviewMentalHealth"
+                        value="no">
+                    <label for="noBringUpInInterviewMentalHealth">No</label>
+                    <input type="radio" id="maybeBringUpInInterviewMentalHealth" name="bringUpInInterviewMentalHealth"
+                        value="maybe">
+                    <label for="maybeBringUpInInterviewMentalHealth">May be</label>
+                </div>
+
+                <!-- Question 20 -->
+                <label for="bringUpInInterviewPhysicalHealth">Would you bring up a physical
+                    health issue with a potential employer in an interview?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesBringUpInInterviewPhysicalHealth" name="bringUpInInterviewPhysicalHealth"
+                        value="yes" required>
+                    <label for="yesBringUpInInterviewPhysicalHealth">Yes</label>
+                    <input type="radio" id="noBringUpInInterviewPhysicalHealth" name="bringUpInInterviewPhysicalHealth"
+                        value="no">
+                    <label for="noBringUpInInterviewPhysicalHealth">No</label>
+                    <input type="radio" id="maybeBringUpInInterviewPhysicalHealth"
+                        name="bringUpInInterviewPhysicalHealth" value="maybe">
+                    <label for="maybeBringUpInInterviewPhysicalHealth">May be</label>
+                </div>
+
+                <!-- Question 21 -->
+                <label for="employerTakesMentalHealthSeriously">Do you feel that your
+                    employer takes mental health as seriously as physical health?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesEmployerTakesMentalHealthSeriously"
+                        name="employerTakesMentalHealthSeriously" value="yes" required>
+                    <label for="yesEmployerTakesMentalHealthSeriously">Yes</label>
+                    <input type="radio" id="noEmployerTakesMentalHealthSeriously"
+                        name="employerTakesMentalHealthSeriously" value="no">
+                    <label for="noEmployerTakesMentalHealthSeriously">No</label>
+                    <input type="radio" id="dontKnowEmployerTakesMentalHealthSeriously"
+                        name="employerTakesMentalHealthSeriously" value="dontKnow">
+                    <label for="dontKnowEmployerTakesMentalHealthSeriously">Don't know</label>
+                </div>
+
+                <!-- Question 22 -->
+                <label for="observedNegativeConsequences">Have you heard of or observed
+                    negative consequences for coworkers with mental health conditions in your workplace?</label>
+                <div class="form-group">
+                    <input type="radio" id="yesObservedNegativeConsequences" name="observedNegativeConsequences"
+                        value="yes" required>
+                    <label for="yesObservedNegativeConsequences">Yes</label>
+                    <input type="radio" id="noObservedNegativeConsequences" name="observedNegativeConsequences"
+                        value="no">
+                    <label for="noObservedNegativeConsequences">No</label>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="lower-section">
+            <p>Copyright ⓒ 2024 | MedIQ Advisor | All Rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

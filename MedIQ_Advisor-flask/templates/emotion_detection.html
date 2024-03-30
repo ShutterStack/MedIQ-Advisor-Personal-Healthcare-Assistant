@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/utility.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/emotion_detection.css') }}">
+    <title>Emotion Detection | MedIQ Advisor</title>
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <img src="/static/images/mediq_advisor.png" alt="Logo">
+        </div>
+        <div class="center">
+            <nav>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/about_us">About Us</a></li>
+                    <li><a href="/contact_us">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right">
+            <a href="/"><button>Sign Out</button></a>
+        </div>
+    </header>
+
+    <main>
+        <div id="video-container">
+            <h1>Real-time Emotion Detection</h1>
+            <img id="video-feed" src="{{ url_for('video_feed_emotion') }}" alt="Video Feed">
+        </div>
+    </main>
+
+    <footer>
+        <div class="lower-section">
+            <p>Copyright ⓒ 2024 | MedIQ Advisor | All Rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

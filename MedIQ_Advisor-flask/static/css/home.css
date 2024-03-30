@@ -1,0 +1,42 @@
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.home-container-left {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.home-container-upper-section h2 {
+    color: #042b49;
+    margin-bottom: 10px;
+}
+
+.home-container-lower-section {
+    margin-top: 20px;
+}
+
+.home-container-lower-section a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.home-container-lower-section button {
+    background-color: #2688d1;
+    color: #f0f2f4;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.home-container-lower-section button:hover {
+    background-color: #00ad94;
+}
+
+.home-container-right {
+    flex: 1;
+}
