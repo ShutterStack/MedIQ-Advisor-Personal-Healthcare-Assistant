@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/utility.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Index | MedIQ Advisor</title>
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <img src="/static/images/mediq_advisor.png" alt="Logo">
+        </div>
+        <div class="center">
+            <nav>
+                <ul>
+                    <li><a href="/about_us">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right">
+            <a href="/sign_in"><button>Sign In</button></a>
+            <a href="/sign_up"><button>Sign Up</button></a>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="index-container-left">
+            <div class="index-container-upper-section">
+                <h2>Welcome to MedIQ Advisor: Your personal healthcare companion</h2>
+                <p>The healthcare industry is continuously looking for ways to improve user experience and outcomes.
+                    Feel free
+                    to try out
+                    the features provided below.</p>
+            </div>
+            <div class="index-container-lower-section">
+                <a href="/emotion_detection"><button>Emotion Detection</button></a>
+                <a href="/chatbot"><button>Chatbot</button></a>
+                <a href="/voice_assistant"><button>Voice Assistant</button></a>
+            </div>
+        </div>
+        <div class="index-container-right">
+            <img src="#" alt="">
+        </div>
+    </main>
+
+    <footer>
+        <div class="lower-section">
+            <p>Copyright ⓒ 2024 | MedIQ Advisor | All Rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

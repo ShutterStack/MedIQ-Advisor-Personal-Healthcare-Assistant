@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/utility.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact_us.css') }}">
+    <title>Contact Us | MedIQ Advisor</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="left">
+            <img src="/static/images/mediq_advisor.png" alt="Logo">
+        </div>
+        <div class="center">
+            <nav>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/about_us">About Us</a></li>
+                    <li><a href="/contact_us">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right">
+            <a href="/"><button>Sign Out</button></a>
+        </div>
+    </header>
+
+
+    <main>
+        <h2>Fill this to reach out to us!</h2>
+
+        <div class="contact-us-container-form">
+            <form id="contactForm" action="/contact_us" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone No:</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="Enter a 10-digit phone number"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+
+                <button id="contactUsButton" type="submit">Submit</button>
+            </form>
+
+            <div id="notification" style="display: none;"></div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="lower-section">
+            <p>Copyright ⓒ 2024 | MedIQ Advisor | All Rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const contactForm = document.querySelector("#contactForm");
+
+            contactForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const name = document.querySelector("#name").value;
+                const phone = document.querySelector("#phone").value;
+                const email = document.querySelector("#email").value;
+                const description = document.querySelector("#description").value;
+
+                // Simple validation
+                if (!name || !phone || !email || !description) {
+                    alert("Please fill in all fields");
+                    return;
+                }
+
+                // You can add more complex validation if needed, such as email format validation, phone number format validation, etc.
+
+                // If all fields are valid, submit the form
+                contactForm.submit();
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

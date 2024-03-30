@@ -1,0 +1,42 @@
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.index-container-left {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.index-container-upper-section h2 {
+    color: #042b49;
+    margin-bottom: 10px;
+}
+
+.index-container-lower-section {
+    margin-top: 20px;
+}
+
+.index-container-lower-section a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.index-container-lower-section button {
+    background-color: #2688d1;
+    color: #f0f2f4;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.index-container-lower-section button:hover {
+    background-color: #00ad94;
+}
+
+.index-container-right {
+    flex: 1;
+}

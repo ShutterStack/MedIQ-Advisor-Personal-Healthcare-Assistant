@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/utility.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sign_in.css') }}">
+    <title>Sign In | MedIQ Advisor</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="left">
+            <img src="/static/images/mediq_advisor.png" alt="Logo">
+        </div>
+        <div class="center">
+            <nav>
+                <ul>
+                    <li><a href="/about_us">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right">
+            <a href="/sign_in"><button>Sign In</button></a>
+            <a href="/sign_up"><button>Sign Up</button></a>
+        </div>
+    </header>
+
+    <main>
+        <h2>Sign In & Enjoy :)</h2>
+
+        
+        <div class="flash-message-container">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
+
+
+        <div class="sign-in-form">
+            <form action="/sign_in" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <a href="/forgot_password">
+                    <label id="forgotPassword">Forgot password?</label>
+                </a>
+
+                <button id="signInButton" type="submit">Signin</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="lower-section">
+            <p>Copyright ⓒ 2024 | MedIQ Advisor | All Rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

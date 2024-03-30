@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/utility.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/voice_assistant.css') }}">
+    <title>Voice Assistant | MedIQ Advisor</title>
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <img src="/static/images/mediq_advisor.png" alt="Logo">
+        </div>
+        <div class="center">
+            <nav>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/about_us">About Us</a></li>
+                    <li><a href="/contact_us">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right">
+            <a href="/"><button>Sign Out</button></a>
+        </div>
+    </header>
+
+    <main>
+        <h2>Voice Assistant</h2>
+        <div class="assistant-container">
+            <div class="conversation" id="conversation"></div>
+            <button id="startBtn">Start Listening</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="lower-section">
+            <p>Copyright ⓒ 2024 | MedIQ Advisor | All Rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const startBtn = document.getElementById('startBtn');
+        const conversation = document.getElementById('conversation');
+
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+
+        recognition.continuous = true;
+
+        recognition.onstart = () => {
+            startBtn.textContent = 'Listening...';
+        };
+
+        recognition.onend = () => {
+            startBtn.textContent = 'Start Listening';
+        };
+
+        recognition.onerror = (event) => {
+            console.error('Speech recognition error detected: ' + event.error);
+        };
+
+        recognition.onresult = (event) => {
+            const result = event.results[event.results.length - 1];
+            const text = result[0].transcript;
+            conversation.innerHTML += `<p>You said: ${text}</p>`;
+        };
+
+        startBtn.addEventListener('click', () => {
+            recognition.start();
+        });
+
+    </script>
+</body>
+
+</html>

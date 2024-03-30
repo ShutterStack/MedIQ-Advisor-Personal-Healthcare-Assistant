@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/utility.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sign_up.css') }}">
+    <title>Sign Up | MedIQ Advisor</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="left">
+            <img src="/static/images/mediq_advisor.png" alt="Logo">
+        </div>
+        <div class="center">
+            <nav>
+                <ul>
+                    <li><a href="/about_us">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right">
+            <a href="/sign_in"><button>Sign In</button></a>
+            <a href="/sign_up"><button>Sign Up</button></a>
+        </div>
+    </header>
+
+
+    <main>
+        <h2>Sign up here!</h2>
+
+
+        <div class="flash-message-container">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
+
+
+        <div class="sign-up-container-form">
+            <form id="signUpForm" action="/sign_up" method="POST">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button id="signUpButton" type="submit">Signup</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="lower-section">
+            <p>Copyright ⓒ 2024 | MedIQ Advisor | All Rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
