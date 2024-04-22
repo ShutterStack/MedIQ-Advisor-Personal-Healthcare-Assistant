@@ -1,0 +1,19 @@
+/* #video-container {
+    margin: auto;
+    width: 50%;
+}
+
+#video-feed {
+    width: 100%;
+    border: 2px solid black;
+} */
+
+#video-container {
+    text-align: center;
+}
+
+#video-feed {
+    max-width: 100%;
+    /* Ensure the video feed image does not exceed its container's width */
+    border: 2px solid black;
+}
