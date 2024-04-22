@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detection | MedIQ Advisor</title>
+    <style>
+        /* CSS styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #video-container {
+            position: relative;
+            text-align: center;
+        }
+
+        #video-feed {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .proceed-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <img src="/static/images/logo.png" alt="Logo" style="width:64px;">
+        </div>
+        <div class="center">
+            <nav>
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/about_us">About Us</a></li>
+                    <li><a href="/contact_us">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right">
+            <a href="/"><button>Sign Out</button></a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- <div>
+            <p>Final out Variable's score: {{ finalout }}</p>
+        </div> -->
+
+        <div id="video-container">
+            <h1>Real-time Emotion Detection</h1>
+            <img id="video-feed" src="{{ url_for('video_feed_emotion') }}" alt="Video Feed">
+            <div class="proceed-button">
+                <form action="/emotion_questionnaire" method="POST">
+                    <button type="submit">Proceed</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    
+</body>
+
+</html>

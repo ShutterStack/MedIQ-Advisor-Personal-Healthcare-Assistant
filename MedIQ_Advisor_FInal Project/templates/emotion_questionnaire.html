@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedIQ Advisor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <style>
+        /* style.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/images/background_image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            width: 80vw;
+            /* Set the width to 100% of the viewport width */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            /* Transparent white background */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-control,
+        .form-select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            /* Add margin-bottom to create space below the submit button */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+        }
+
+        footer a {
+            color: #fff;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- form -->
+    <div class="container py-5">
+
+        <form method="POST" action="/submit_form" class="bg-light p-4 rounded" id="myForm" onsubmit="submitForm()">
+
+            <h2 class="text-center mb-4">Mental Health Survey</h2>
+
+            <!-- Question 1 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="age">What is your age?</label>
+                <input type="number" id="age" name="age" class="form-control" placeholder="Enter Your Age" required>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="gender">Choose your gender.</label>
+                <select class="form-select" id="gender" name="gender" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="nonBinary">Non-binary</option>
+                </select>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="selfEmployed">Are you self-employed?</label>
+                <select class="form-select" id="selfEmployed" name="selfEmployed" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="familyHistory">Do you have a family history of mental
+                    illness?</label>
+                <select class="form-select" id="familyHistory" name="familyHistory" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="mentalHealthInterference">If you have a mental health condition, do
+                    you feel that interferes with your work?</label>
+                <select class="form-select" id="mentalHealthInterference" name="mentalHealthInterference" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="maybe">May be</option>
+                </select>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="companySize">How many employees does your company or organization
+                    have?</label>
+                <select class="form-select" id="companySize" name="companySize" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="0-25">0-25</option>
+                    <option value="26-100">26-100</option>
+                    <option value="100-500">100-500</option>
+                    <option value="500-1000">500-1000</option>
+                    <option value="moreThan1000">More than 1000</option>
+                </select>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="remoteWork">Do you work remotely (outside of an office) at least 50%
+                    of the time?</label>
+                <select class="form-select" id="remoteWork" name="remoteWork" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="techCompany">Is your company/organization primarily a
+                    tech-based?</label>
+                <select class="form-select" id="techCompany" name="techCompany" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="mentalHealthBenefits">Does your employer provide mental health
+                    benefits?</label>
+                <select class="form-select" id="mentalHealthBenefits" name="mentalHealthBenefits" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="knowMentalHealthCare">Do you know the options for mental health care
+                    your employer provides?</label>
+                <select class="form-select" id="knowMentalHealthCare" name="knowMentalHealthCare" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="notSure">Not sure</option>
+                </select>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="discussedMentalHealth">Has your employer ever discussed mental
+                    health as part of an employee wellness program?</label>
+                <select class="form-select" id="discussedMentalHealth" name="discussedMentalHealth" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="dontKnow">Don't know</option>
+                </select>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="resourcesLearnMentalHealth">Does your employer provide resources to
+                    learn more about mental health issues and how to seek help?</label>
+                <select class="form-select" id="resourcesLearnMentalHealth" name="resourcesLearnMentalHealth" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="dontKnow">Don't know</option>
+                </select>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="anonymityProtected">Is your anonymity protected if you choose to
+                    take advantage of mental health or substance abuse treatment resources?</label>
+                <select class="form-select" id="anonymityProtected" name="anonymityProtected" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="dontKnow">Don't know</option>
+                </select>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="medicalLeave">How easy is it for you to take medical leave for a
+                    mental health condition?</label>
+                <select class="form-select" id="medicalLeave" name="medicalLeave" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="dontKnow">Don't know</option>
+                    <option value="veryEasy">Very easy</option>
+                    <option value="somewhatEasy">Somewhat easy</option>
+                    <option value="somewhatDifficult">Somewhat difficult</option>
+                    <option value="veryDifficult">Very difficult</option>
+                </select>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="negativeConsequencesMentalHealth">Do you think that discussing a
+                    mental health issue with your employer would have negative consequences?</label>
+                <select class="form-select" id="negativeConsequencesMentalHealth"
+                    name="negativeConsequencesMentalHealth" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="maybe">May be</option>
+                </select>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="negativeConsequencesPhysicalHealth">Do you think that discussing a
+                    physical health issue with your employer would have negative consequences?</label>
+                <select class="form-select" id="negativeConsequencesPhysicalHealth"
+                    name="negativeConsequencesPhysicalHealth" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="maybe">May be</option>
+                </select>
+            </div>
+
+            <!-- Question 17 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="discussWithCoworkers">Would you be willing to discuss a mental
+                    health issue with your coworkers?</label>
+                <select class="form-select" id="discussWithCoworkers" name="discussWithCoworkers" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="someOfThem">Some of them</option>
+                </select>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="discussWithSupervisors">Would you be willing to discuss a mental
+                    health issue with your direct supervisors?</label>
+                <select class="form-select" id="discussWithSupervisors" name="discussWithSupervisors" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="someOfThem">Some of them</option>
+                </select>
+            </div>
+
+            <!-- Question 19 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="bringUpInInterviewMentalHealth">Would you bring up a mental health
+                    issue with a potential employer in an interview?</label>
+                <select class="form-select" id="bringUpInInterviewMentalHealth" name="bringUpInInterviewMentalHealth"
+                    required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="maybe">May be</option>
+                </select>
+            </div>
+
+            <!-- Question 20 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="bringUpInInterviewPhysicalHealth">Would you bring up a physical
+                    health issue with a potential employer in an interview?</label>
+                <select class="form-select" id="bringUpInInterviewPhysicalHealth"
+                    name="bringUpInInterviewPhysicalHealth" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="maybe">May be</option>
+                </select>
+            </div>
+
+            <!-- Question 21 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="employerTakesMentalHealthSeriously">Do you feel that your employer
+                    takes mental health as seriously as physical health?</label>
+                <select class="form-select" id="employerTakesMentalHealthSeriously"
+                    name="employerTakesMentalHealthSeriously" required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="dontKnow">Don't know</option>
+                </select>
+            </div>
+
+            <!-- Question 22 -->
+            <div class="mb-3">
+                <label class="form-label mb-2" for="observedNegativeConsequences">Have you heard of or observed negative
+                    consequences for coworkers with mental health conditions in your workplace?</label>
+                <select class="form-select" id="observedNegativeConsequences" name="observedNegativeConsequences"
+                    required>
+                    <option selected disabled>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Submit button -->
+            <div class="text-center">
+                <button type="button" id="submitBtn" class="btn btn-primary" onclick="submitForm()">Submit</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Your JavaScript code for animations, sliders, etc. can go here
+        });
+        function submitForm() {
+            // Generate a random number between 0 and 1
+            var randomNumber = Math.random();
+
+            // Determine the URL based on the random number
+            var redirectUrl;
+            // if (randomNumber <= 0.5) {
+            //     redirectUrl = "/emotion_questionnaire_response1";
+            // } else {
+            //     redirectUrl = "/emotion_questionnaire_response2";
+            // }
+            if (randomNumber <= 0.1) {
+                redirectUrl = "/emotion_questionnaire_response1_1";
+            } else if (randomNumber <= 0.2) {
+                redirectUrl = "/emotion_questionnaire_response1_2";
+            } else if (randomNumber <= 0.3) {
+                redirectUrl = "/emotion_questionnaire_response1_3";
+            } else if (randomNumber <= 0.4) {
+                redirectUrl = "/emotion_questionnaire_response1_4";
+            } else if (randomNumber <= 0.5) {
+                redirectUrl = "/emotion_questionnaire_response1_5";
+            } else if (randomNumber <= 0.6) {
+                redirectUrl = "/emotion_questionnaire_response2_1";
+            } else if (randomNumber <= 0.7) {
+                redirectUrl = "/emotion_questionnaire_response2_2";
+            } else if (randomNumber <= 0.8) {
+                redirectUrl = "/emotion_questionnaire_response2_3";
+            } else if (randomNumber <= 0.9) {
+                redirectUrl = "/emotion_questionnaire_response2_4";
+            } else {
+                redirectUrl = "/emotion_questionnaire_response2_5";
+            }
+
+
+            // Set the action attribute of the form to the determined URL
+            document.getElementById("myForm").action = redirectUrl;
+
+            // Submit the form
+            document.getElementById("myForm").submit();
+        }
+
+    </script>
+</body>
+
+</html>
