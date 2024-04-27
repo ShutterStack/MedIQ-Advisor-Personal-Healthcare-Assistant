@@ -13,11 +13,21 @@
     <style>
         body {
             overflow-x: hidden; /* Prevent horizontal scrolling */
+            padding: 20px; /* Add padding to the body */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         /* Ensure the container takes full height */
         .container {
-            min-height: 100vh;
+            min-height: 10vh;
+        }
+
+        /* Center align text */
+        .text-center {
+            text-align: center;
         }
 
         /* Ensure offcanvas scroll and prevent overlapping */
@@ -30,31 +40,51 @@
             left: auto;
             z-index: 1050; /* Must be greater than the z-index of your content */
         }
+
+        /* Adjust spacing between elements */
+        #Oval {
+            margin-bottom: 50px; /* Add margin bottom to the Oval section */
+        }
+
+        #MicBtn {
+            margin-bottom: 30px; /* Add margin bottom to the MicBtn */
+        }
+
+        #TextInput {
+            margin-bottom: 30px; /* Add margin bottom to the TextInput */
+        }
+
+        /* Fix chatbox overflowing issue */
+        #TextInput .input-field {
+            max-width: calc(100% - 38px); /* Adjust max-width of input field */
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <section id="Oval" class="mb-4">
             <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
+                <div class="col-md-12 text-center">
                     <div class="loader"></div>
-                    <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-                        <h1 class="text-light text text-center">Welcome to MedIQ Health Advisor</h1>
-                    </div>
-                    <h5 class="text-light text-center">Hello! My Name is Bob! Ask me anything </h5>
+                    <img src="assets/img/pulse.gif" alt="Medical Gif">
+                    <h1 class="text-light text text-center mb-4">Welcome to MedIQ Health Advisor</h1>
+                    <br>
+                    <br>
+
+                    <button id="MicBtn" class="glow-on-hover mic-btn" style="font-size: 50px;"><i class="bi bi-mic"></i></button>
+                    <br>
+                    <br>
+                    <h5 class="text-light text-center mt-4 mb-4">Hello! My Name is Bob! Ask me anything </h5>
                     <div class="col-md-12 mt-4 pt-4">
                         <div class="text-center">
-                            <div id="TextInput" class="d-flex">
-                                <input type="text" class="input-field" name="chatbox" id="chatbox" placeholder="type here ... ">
+                            <div id="TextInput" class="d-flex justify-content-center">
+                                <input type="text" class="input-field" name="chatbox" id="chatbox" placeholder="Type here ... ">
                                 <button id="SendBtn" class="glow-on-hover" hidden><i class="bi bi-send"></i></button>
-                                <button id="MicBtn" class="glow-on-hover"><i class="bi bi-mic"></i></button>
                                 <button id="ChatBtn" class="glow-on-hover" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-chat-dots"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1"></div>
             </div>
         </section>
         <section id="SiriWave" class="mb-4" hidden>
